@@ -11,9 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 /*
 |--------------------------------------------------------------------------
@@ -27,5 +24,8 @@ Route::get('/', function () {
 */
 
 Route::group(['middleware' => ['web']], function () {
-    //
+    
+    Route::get('/',array('as'=>'home','uses'=>'PageController@home'));
+    Route::put('calculations',array('before'=>'csrf','uses'=>'PageController@calc'));
+
 });
